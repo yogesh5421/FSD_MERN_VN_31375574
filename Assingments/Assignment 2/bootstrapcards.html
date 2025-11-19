@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#" onclick="showHome()">Profile</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#" onclick="showHome()">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="showCards()">Cards</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    
+    <header id="heroSection" class="bg-light py-5 text-center">
+        <h1 class="display-4">Welcome!</h1>
+        <p class="lead">This is the homepage</p>
+    </header>
+
+
+
+    <section id="cardsSection" class="hidden">
+        <div class="container py-5">
+            <h2 class="text-center mb-4">Our Team</h2>
+
+            <div class="row justify-content-center g-4">
+
+        
+                <div class="col-md-4">
+                    <div class="card text-center">
+                        <img src="https://media.licdn.com/dms/image/v2/D5603AQEHdYbj4szxaw/profile-displayphoto-crop_800_800/B56ZlmjGETI8AI-/0/1758362101821?e=1765411200&v=beta&t=6D2w_hW9WjffbVqmIV4tMtDDX9L_q8pBxd-Lqbo50t0" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Yuvaraj</h5>
+                            <p class="card-text">Frontend Developer</p>
+                            <a href="https://www.linkedin.com/in/imyuvaraj05" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="col-md-4">
+                    <div class="card text-center">
+                        <img src="https://media.licdn.com/dms/image/v2/D4E03AQFquZqLqG849Q/profile-displayphoto-crop_800_800/B4EZpZM_GXKoAI-/0/1762433169790?e=1765411200&v=beta&t=fpOjVc8-V4OzRA-AR3hWwrthskYRu-YXYHFZdJvPhE8" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Mathavan</h5>
+                            <p class="card-text">Backend Engineer</p>
+                            <a href="https://www.linkedin.com/in/mathavan-s-41b7022b4" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+            
+                <div class="col-md-4">
+                    <div class="card text-center">
+                        <img src="https://media.licdn.com/dms/image/v2/D5603AQEVoBlDPfwjJw/profile-displayphoto-shrink_800_800/B56ZX6cf.TGsAc-/0/1743663531865?e=1765411200&v=beta&t=Ebpjw7sZJEh4nX7W4IXS7tk8HD9W-JOPnKRBRKNKX4Y" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Santhosh</h5>
+                            <p class="card-text">UI/UX Designer</p>
+                            <a href="https://www.linkedin.com/in/santhosh-k-10477a255" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    
+    <footer class="bg-dark text-white text-center py-3">
+        Thank you!
+    </footer>
+
+    <script>
+        
+        function showHome() {
+            document.getElementById("heroSection").classList.remove("hidden");
+      
+            document.getElementById("cardsSection").classList.add("hidden");
+        }
+
+        function showCards() {
+            document.getElementById("heroSection").classList.add("hidden");
+
+            document.getElementById("cardsSection").classList.remove("hidden");
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
