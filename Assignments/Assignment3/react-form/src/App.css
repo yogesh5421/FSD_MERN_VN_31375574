@@ -1,0 +1,25 @@
+/* Full-screen flex wrapper */
+.center-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #0c0c0c; /* or whatever background you want */
+  padding: 20px; /* optional to give spacing around */
+  box-sizing: border-box;
+}
+
+/* Inner content box */
+.center-inner {
+  width: 100%;
+  max-width: 700px; /* or any width you prefer */
+  background-color: #ffffff; /* set the content background white, or another color */
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+
+  /* this ensures text inside is aligned well (optional) */
+  text-align: left;
+  box-sizing: border-box;
+}
