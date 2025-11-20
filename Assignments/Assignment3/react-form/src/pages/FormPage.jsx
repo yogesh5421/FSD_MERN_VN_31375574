@@ -1,44 +1,74 @@
 import { useState } from "react";
-import { timeZones } from "../data/timezones";
 import { useNavigate } from "react-router-dom";
 
-function FormPage({ setSelectedZones }) {
-  const [zones, setZones] = useState([]);
+function FormPage({ users, setUsers }) {
   const navigate = useNavigate();
 
-  const handleSelect = (e) => {
-    const value = e.target.value;
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    city: "",
+  });
 
-    if (!zones.includes(value)) {
-      setZones([...zones, value]);
-    }
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = () => {
-    setSelectedZones(zones);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const newUser = {
+      id: users.length + 1,
+      ...form,
+    };
+
+    setUsers([...users, newUser]);
+
     navigate("/cards");
   };
 
   return (
-    <div>
-      <h2>Select Time Zones</h2>
+    <div style={{ color: "white" }}>
+      <h2>Add User</h2>
 
-      <select className="form-select" onChange={handleSelect}>
-        <option>Select a time zone</option>
-        {timeZones.map((zone) => (
-          <option key={zone}>{zone}</option>
-        ))}
-      </select>
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          background: "#222",
+          padding: "20px",
+          borderRadius: "10px",
+          marginTop: "20px",
+        }}
+      >
+        <label>Name</label>
+        <input
+          type="text"
+          name="name"
+          className="form-control mb-3"
+          onChange={handleChange}
+          required
+        />
 
-      <ul className="list-group mt-3">
-        {zones.map((z, i) => (
-          <li key={i} className="list-group-item">{z}</li>
-        ))}
-      </ul>
+        <label>Email</label>
+        <input
+          type="email"
+          name="email"
+          className="form-control mb-3"
+          onChange={handleChange}
+          required
+        />
 
-      <button onClick={handleSubmit} className="btn btn-primary mt-3">
-        View Clocks
-      </button>
+        <label>City</label>
+        <input
+          type="text"
+          name="city"
+          className="form-control mb-3"
+          onChange={handleChange}
+          required
+        />
+
+        <button className="btn btn-light w-100">Submit</button>
+      </form>
     </div>
   );
 }

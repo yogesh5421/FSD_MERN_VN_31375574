@@ -1,23 +1,29 @@
 import { Link } from "react-router-dom";
 
-function CardsPage({ selectedZones }) {
-
-  const getTime = (zone) => {
-    return new Date().toLocaleTimeString("en-US", { timeZone: zone });
-  };
-
+function CardsPage({ users }) {
   return (
-    <div>
-      <h2>World Clocks</h2>
-
-      {selectedZones.length === 0 && <p>No zones selected.</p>}
-
+    <div style={{ color: "white" }}>
+      <h2>User Cards</h2>
+<Link to="/" className="btn btn-light mb-3">
+  + Add New User
+</Link>
       <div className="mt-4">
-        {selectedZones.map((zone) => (
-          <div key={zone} className="card p-3 mb-3">
-            <h4>{zone}</h4>
-            <p>Current Time: {getTime(zone)}</p>
-            <Link to={`/details/${encodeURIComponent(zone)}`} className="btn btn-dark">
+        {users.map((user) => (
+          <div
+            key={user.id}
+            style={{
+              background: "#333",
+              padding: "20px",
+              marginBottom: "15px",
+              borderRadius: "10px",
+              color: "white",
+            }}
+          >
+            <h4>{user.name}</h4>
+            <p>Email: {user.email}</p>
+            <p>City: {user.city}</p>
+
+            <Link to={`/details/${user.id}`} className="btn btn-light mt-2">
               View Details
             </Link>
           </div>

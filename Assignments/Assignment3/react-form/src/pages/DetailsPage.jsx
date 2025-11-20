@@ -1,22 +1,31 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
-function DetailsPage() {
-  const { zone } = useParams();
-  const decodedZone = decodeURIComponent(zone);
+function DetailsPage({ users }) {
+  const { id } = useParams();
+  const user = users.find((u) => u.id === Number(id));
 
-  const info = {
-    time: new Date().toLocaleTimeString("en-US", { timeZone: decodedZone }),
-    date: new Date().toLocaleDateString("en-US", { timeZone: decodedZone }),
-  };
+  if (!user)
+    return <p style={{ color: "white" }}>User not found</p>;
 
   return (
-    <div>
-      <h2>{decodedZone} - Details</h2>
+    <div
+      style={{
+        background: "#222",
+        color: "white",
+        padding: "25px",
+        borderRadius: "10px",
+      }}
+    >
+      <h2>User Details</h2>
 
-      <div className="card p-4 mt-3">
-        <p><strong>Current Time:</strong> {info.time}</p>
-        <p><strong>Current Date:</strong> {info.date}</p>
-        <p><strong>Format:</strong> 12-hour (US Locale)</p>
+      <p><strong>Name:</strong> {user.name}</p>
+      <p><strong>Email:</strong> {user.email}</p>
+      <p><strong>City:</strong> {user.city}</p>
+
+      <div className="mt-3">
+        <Link to="/" className="btn btn-light w-100">
+          ➤ Add Another User
+        </Link>
       </div>
     </div>
   );
