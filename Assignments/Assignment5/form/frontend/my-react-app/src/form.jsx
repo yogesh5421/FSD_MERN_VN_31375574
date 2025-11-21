@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function MyForm() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
   });
 
-  
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -16,18 +18,15 @@ function MyForm() {
     });
   };
 
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const res = await axios.post("http://localhost:3001/user/create", formData);
 
-
       console.log(res.data);
       alert("User Created Successfully!");
-      
-    
+
       setFormData({ name: "", email: "", password: "" });
     } catch (error) {
       console.error(error);
@@ -47,7 +46,6 @@ function MyForm() {
         onChange={handleChange}
         placeholder="Enter name"
       />
-
       <br /><br />
 
       <label>Email:</label>
@@ -58,7 +56,6 @@ function MyForm() {
         onChange={handleChange}
         placeholder="Enter email"
       />
-
       <br /><br />
 
       <label>Password:</label>
@@ -69,10 +66,15 @@ function MyForm() {
         onChange={handleChange}
         placeholder="Enter password"
       />
-
       <br /><br />
 
       <button type="submit">Submit</button>
+
+
+      <br /><br />
+      <button type="button" onClick={() => navigate("/cards")}>
+        Cards
+      </button>
     </form>
   );
 }
