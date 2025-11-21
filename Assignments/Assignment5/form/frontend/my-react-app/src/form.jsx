@@ -21,7 +21,7 @@ function MyForm() {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:3001/user/create-user", formData);
+      const res = await axios.post("http://localhost:3001/user/create", formData);
 
 
       console.log(res.data);
